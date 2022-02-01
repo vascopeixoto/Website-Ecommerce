@@ -1,86 +1,82 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Log in</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="/ecommerce/res/admin/bootstrap/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="/ecommerce/res/admin/dist/css/AdminLTE.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="/ecommerce/res/admin/plugins/iCheck/square/blue.css">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+	<title>Login Admin</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/ecommerce/res/admin/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/ecommerce/res/admin/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/ecommerce/res/admin/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/ecommerce/res/admin/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/ecommerce/res/admin/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/ecommerce/res/admin/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/ecommerce/res/admin/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/ecommerce/res/admin/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/ecommerce/res/admin/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/ecommerce/res/admin/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/ecommerce/res/admin/css/main.css">
+<!--===============================================================================================-->
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <a href="/ecommerce/res/admin/index2.html"><b>Admin</b>LTE</a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('/ecommerce/res/admin/images/bg-01.jpg');">
+			<div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+					Account Login
+				</span>
+				<form action="/ecommerce/index.php/admin/login" method="post" class="login100-form validate-form p-b-33 p-t-5">
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" type="text" placeholder="login" name="login">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
 
-    <form action="/ecommerce/index.php/admin/login" method="post">
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="login" name="login">
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" name="password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
-          </div>
-        </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-        </div>
-        <!-- /.col -->
-      </div>
-    </form>
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" placeholder="Password" name="password">
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
 
+					<div class="container-login100-form-btn m-t-32">
+						<button class="btn btn-outline-dark btn-lg">
+							Login
+						</button>
+					</div>
 
-    <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center">Register a new membership</a>
+				</form>
+				<a href="#">I forgot my password</a><br>
+			</div>
+		</div>
+	</div>
+	
 
-  </div>
-  <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="/ecommerce/res/admin/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/ecommerce/res/admin/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/ecommerce/res/admin/vendor/bootstrap/js/popper.js"></script>
+	<script src="/ecommerce/res/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/ecommerce/res/admin/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/ecommerce/res/admin/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/ecommerce/res/admin/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="/ecommerce/res/admin/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="/ecommerce/res/admin/js/main.js"></script>
 
-<!-- jQuery 2.2.3 -->
-<script src="/ecommerce/res/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="/ecommerce/res/admin/bootstrap/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="/ecommerce/res/admin/plugins/iCheck/icheck.min.js"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-  });
-</script>
 </body>
 </html>
