@@ -53,7 +53,7 @@
 					</div>
 
 				</form>
-				<a href="#">I forgot my password</a><br>
+				<a href="/ecommerce/index.php/admin/forgot">I forgot my password</a><br>
 			</div>
 		</div>
 	</div>
