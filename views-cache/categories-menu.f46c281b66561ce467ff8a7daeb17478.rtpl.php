@@ -1,0 +1,1 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?><li><a href="/ecommerce/index.php/categories/3">Distribuição</a></li><li><a href="/ecommerce/index.php/categories/4">Logística</a></li>
