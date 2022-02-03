@@ -46,8 +46,8 @@
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 					</div>
 
-					<div class="container-login100-form-btn m-t-32">
-						<button class="btn btn-outline-dark btn-lg">
+					<div class="container-login100-form-btn m-t-32 text-center" >
+						<button class="btn btn-outline-dark btn-lg ">
 							Login
 						</button>
 					</div>

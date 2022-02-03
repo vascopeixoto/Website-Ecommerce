@@ -46,7 +46,7 @@
 						<input class="input100" type="email" placeholder="Digite o e-mail" name="email">
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
      
-            <div class="container-login100-form-btn m-t-32" >
+            <div class="container-login100-form-btn m-t-32 text-center" >
               <button class="btn btn-outline-dark btn-lg"><i class="fa fa-arrow-right text-muted"></i>
               </button>
             </div>
