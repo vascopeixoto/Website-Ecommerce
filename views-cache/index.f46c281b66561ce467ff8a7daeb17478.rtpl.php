@@ -66,8 +66,7 @@
 		</div>
 	</div>
 </div>
-<div id="middle"  >
-	<div class="container">
+	<div class="container" style="margin-top: 30px; margin-bottom: 30px;">
 
 		<div class="row"> 
 			<div class="col-sm-6 col-md-4"> 
@@ -103,4 +102,37 @@
 			</div> 
 		</div>
 	</div>
-</div>
+
+<div class="maincontent-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				<div class="latest-product">
+					<h2 class="section-title">Serviços</h2>
+					<div class="product-carousel">
+						<?php $counter1=-1;  if( isset($products) && ( is_array($products) || $products instanceof Traversable ) && sizeof($products) ) foreach( $products as $key1 => $value1 ){ $counter1++; ?>
+
+						<div class="single-product">
+							<div class="product-f-image">
+								<img src="<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="">
+								<div class="product-hover">
+									<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Comprar</a>
+									<a href="/ecommerce/index.php/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="view-details-link"><i class="fa fa-link"></i> Detalhes</a>
+								</div>
+							</div>
+							
+							<h2><a href="/ecommerce/index.php/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["desproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></h2>
+							
+							<div class="product-carousel-price">
+								<ins><?php echo formatPrice($value1["vlprice"]); ?>€</ins>
+							</div> 
+						</div>
+						<?php } ?>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> <!-- End main content area -->
+

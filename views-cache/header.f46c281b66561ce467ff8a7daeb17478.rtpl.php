@@ -45,7 +45,7 @@
 			
 		    <div class="navbar-header">
 		    	<!-- LOGO -->
-		    	<a href="?i=home" alt="meu site - home" title="Home"><img id="logo" 
+		    	<a href="/ecommerce/index.php" alt="meu site - home" title="Home"><img id="logo" 
 
 		    		src="/ecommerce/res/site/img/logo.png"></a>
 
@@ -63,6 +63,7 @@
 					<li class="link_menu"><a href="?i=sobre">Sobre</a></li>
 					<li class="link_menu"><a href="?i=quemsomos">Quem Somos</a></li>
 					<li class="link_menu"><a href="?i=contacto">Contactos</a></li>
+                    <li class="link_menu"><a href="/ecommerce/index.php/cart">Carrinho - <span class="cart-amunt">R$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a></li>
 				</ul>
 			</div>
 

@@ -5,12 +5,11 @@ nav { min-height: 90px; margin-bottom: 0 !important;  }
 
 body{background-color:#A9A9A9 ;}
 
-#main { padding: 200px 0px 100px 0px; background: linear-gradient(#FA8072 , 	#FF0000);}
+#main { padding: 120px 0px 20px 0px; background: linear-gradient(#FA8072 , 	#FF0000);}
 #main img  { max-height: 597px; }
 
 #main2 { padding: 150px 0px 50px 0px; background-color:#A9A9A9 ; }
 
-#middle { margin: 75px 0;}
 #logo { margin:20px 0; 
 height: 64px;
 }
@@ -20,6 +19,8 @@ height: 64px;
 #sobre p { text-align: justify; color:black; font-size: 18px; line-height: 1.8; padding-top:20px;}
 #contacto { margin: 50px 0;}
 #ola {margin: 50px 0;  }
+
+
 
 #apresentacao { background-color: #363636;}
 

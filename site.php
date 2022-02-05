@@ -1,13 +1,17 @@
 <?php
 use \vasco\Page;
 use \vasco\Model\Category;
+use \vasco\Model\Product;
+use \vasco\Model\Cart;
 
 
 
 $app->get('/', function() {
-    
+    $products=Product::listAll();
 	$page = new Page();
-	$page->setTpl("index");
+	$page->setTpl("index",[
+		'products'=>Product::checklist($products)
+	]);
 
 });
 
@@ -18,8 +22,25 @@ $app->get('/categories/:idcategory', function($idcategory){
 
 	$page->setTpl("category", [
 		'category'=>$categories->getValues(),
-		'products'=>[]
+		'products'=>Product::checklist($categories->getProducts())
 	]);
+});
+
+$app->get('/products/:desurl', function($desurl){
+	$product = new Product();
+	$product->getFromURL($desurl);
+	$page= new Page();
+
+	$page->setTpl("product-detail", [
+		'product'=>$product->getValues(),
+		'categories'=>$product->getCategories()
+	]);
+});
+
+$app->get('/cart',function(){
+	$cart=Cart::getFromSession();
+	$page= new Page();
+	$page->setTpl("cart");
 });
 
 ?>

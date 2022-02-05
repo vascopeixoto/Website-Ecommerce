@@ -1,4 +1,4 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="product-big-title-area">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="product-big-title-area" id="main">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -11,23 +11,25 @@
 </div>
 
 <div class="single-product-area">
-    <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
             <?php $counter1=-1;  if( isset($products) && ( is_array($products) || $products instanceof Traversable ) && sizeof($products) ) foreach( $products as $key1 => $value1 ){ $counter1++; ?>
 
             <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <div class="product-upper">
-                        <img src="/ecommerce/res/site/img/product-2.jpg" alt="">
+                <div class="single-shop-product text-center thumbnail tt">
+                    <div class="product-upper ">
+                        <a href="/ecommerce/index.php/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" style="text-decoration: none" >
+                            <img class="image"src="<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="" height="2000px" width="auto">
+                                <h3><?php echo htmlspecialchars( $value1["desproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h3>
+                        </a>
                     </div>
-                    <h2><a href="">Apple new mac book 2015 March :P</a></h2>
+                    
                     <div class="product-carousel-price">
-                        <ins>$899.00</ins> <del>$999.00</del>
+                        <ins><?php echo formatPrice($value1["vlprice"]); ?>€</ins>
                     </div>  
                     
                     <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
+                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Comprar</a>
                     </div>                       
                 </div>
             </div>
@@ -35,32 +37,6 @@
 
             
           
-        </div>
-        
-        <div class="row">
-            <div class="col-md-12">
-                <div class="product-pagination text-center">
-                    <nav>
-                        <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">«</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                            <span aria-hidden="true">»</span>
-                            </a>
-                        </li>
-                        </ul>
-                    </nav>                        
-                </div>
-            </div>
         </div>
     </div>
 </div>
