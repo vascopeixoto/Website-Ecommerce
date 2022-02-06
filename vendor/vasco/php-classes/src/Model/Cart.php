@@ -8,6 +8,7 @@ use \vasco\Model\User;
 class Cart extends Model{
 
     const SESSION= "Cart";
+    const SESSSION_ERROR= "CartError";
 
     public static function getFromSession(){
         $cart= new Cart();
@@ -82,6 +83,8 @@ class Cart extends Model{
 			":idcart"=>$this->getidcart(),
             ":idproduct"=>$product->getidproduct()
 		));
+
+        $this->getCalculateTotal();
     }
 
     public function removeProduct(Product $product, $all = false){
@@ -97,6 +100,8 @@ class Cart extends Model{
                 ":idproduct"=>$product->getidproduct()
             ));
         }
+
+        $this->getCalculateTotal();
 		
     }
 
@@ -114,6 +119,48 @@ class Cart extends Model{
 
 	}
 
+    public function getProductsTotals(){
+
+		$sql= new Sql();
+		$results= $sql->select("SELECT SUM(vlprice) AS vlprice, COUNT(*) AS nrqtd  FROM tb_products a 
+            INNER JOIN tb_cartsproducts b ON a.idproduct= b.idproduct 
+            WHERE b.idcart=:idcart AND dtremoved IS NULL;", array(
+			":idcart"=>$this->getidcart()
+		));
+
+        if(count($results)>0){
+            return $results[0];
+        }else{
+            return [];
+        }
+	}
+
+    public static function setMsgError($msg){
+        $_SESSION[Cart::SESSSION_ERROR]=$msg;
+    }
+
+    public static function getMsgError(){
+        $msg=(isset($_SESSION[Cart::SESSSION_ERROR])) ? $_SESSION[Cart::SESSSION_ERROR] : "";
+        Cart::clearMsgError();
+        return $msg;
+    }
+
+    public static function clearMsgError(){
+        $_SESSION[Cart::SESSSION_ERROR]= NULL;
+    }
+
+    public function getValues()
+    {
+        $this->getCalculateTotal();
+
+        return parent::getValues();
+    }
+
+    public function getCalculateTotal(){
+        $total=$this->getProductsTotals();
+
+        $this->setvltotal($total['vlprice']);
+    }
 }
 	 
 ?>
