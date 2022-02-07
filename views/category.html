@@ -15,9 +15,9 @@
         <div class="row">
             {loop="$products"}
             <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product text-center thumbnail tt">
+                <div class="single-shop-product text-center img-thumbnail tt">
                     <div class="product-upper ">
-                        <a href="/ecommerce/index.php/products/{$value.desurl}" style="text-decoration: none" >
+                        <a href="/ecommerce/index.php/products/{$value.desurl}" class="text-decoration-none">
                             <img class="image"src="{$value.desphoto}" alt="" height="2000px" width="auto">
                                 <h3>{$value.desproduct}</h3>
                         </a>
@@ -28,7 +28,7 @@
                     </div>  
                     
                     <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/ecommerce/index.php/cart/{$value.idproduct}/add">Comprar</a>
+                        <a class="add_to_cart_button text-decoration-none" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/ecommerce/index.php/cart/{$value.idproduct}/add">Comprar</a>
                     </div>                       
                 </div>
             </div>

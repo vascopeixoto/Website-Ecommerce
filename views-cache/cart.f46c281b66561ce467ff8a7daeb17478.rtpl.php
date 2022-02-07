@@ -19,7 +19,7 @@
                 <div class="product-content-right">
                     <div class="woocommerce">
 
-                        <form action="/checkout">
+                        <form action="ecommerce/index.php/checkout">
                             <?php if( $error != '' ){ ?>
 
                             <div class="alert alert-danger" role="alert">
@@ -90,7 +90,7 @@
 
                                     <table cellspacing="0">
                                         <tbody>
-                                            <tr class="cart-total">
+                                            <tr class="cart-subtotal">
                                                 <th>Total</th>
                                                 <td><span class="amount"><?php echo formatPrice($cart["vltotal"]); ?>€</span></td>
                                             </tr>

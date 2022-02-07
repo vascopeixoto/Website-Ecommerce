@@ -16,9 +16,9 @@
             <?php $counter1=-1;  if( isset($products) && ( is_array($products) || $products instanceof Traversable ) && sizeof($products) ) foreach( $products as $key1 => $value1 ){ $counter1++; ?>
 
             <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product text-center thumbnail tt">
+                <div class="single-shop-product text-center img-thumbnail tt">
                     <div class="product-upper ">
-                        <a href="/ecommerce/index.php/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" style="text-decoration: none" >
+                        <a href="/ecommerce/index.php/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="text-decoration-none">
                             <img class="image"src="<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="" height="2000px" width="auto">
                                 <h3><?php echo htmlspecialchars( $value1["desproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h3>
                         </a>
@@ -29,7 +29,7 @@
                     </div>  
                     
                     <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/ecommerce/index.php/cart/<?php echo htmlspecialchars( $value1["idproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/add">Comprar</a>
+                        <a class="add_to_cart_button text-decoration-none" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/ecommerce/index.php/cart/<?php echo htmlspecialchars( $value1["idproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/add">Comprar</a>
                     </div>                       
                 </div>
             </div>

@@ -5,10 +5,11 @@ use \vasco\Model\User;
 
 
 $app->get('/admin', function() {
-    User::verifyLogin();
+	User::verifyLogin();
 
 	$page = new PageAdmin();
 	$page->setTpl("index");
+
 
 });
 
@@ -17,21 +18,24 @@ $app->get('/admin/login', function(){
 		"header"=> false,
 		"footer"=> false
 	]);
-
-	session_destroy();
-
-	$page->setTpl("login");
+	$page->setTpl("login",[
+		'error'=>User::getError()
+	]);
 
 });
 
 $app->post('/admin/login', function(){
-	User::login($_POST["login"],$_POST["password"]);
-	
+	try{
+		User::login($_POST['login'], $_POST['password']);
+	}catch(Exception $e){
+		User::setError($e->getMessage());
+	}
 	header("Location: /ecommerce/index.php/admin");
 	exit;
 });
 
 $app->get('/admin/logout', function(){
+	User::logout();
 	header("Location: /ecommerce/index.php/admin/login");
 	exit;
 });

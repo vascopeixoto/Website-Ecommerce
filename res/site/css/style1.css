@@ -10,7 +10,7 @@ body{background-color:#A9A9A9 ;}
 
 #main2 { padding: 150px 0px 50px 0px; background-color:#A9A9A9 ; }
 
-#logo { margin:20px 0; 
+#logo { margin:10px 0; 
 height: 64px;
 }
 #logo2 { height: 100px; }
@@ -28,5 +28,7 @@ height: 64px;
 
 .link_menu { margin-top:20px; }
 .link_menu a{ color:red !important; padding:10px;  }
-.link_menu a:hover{ background-color:red !important; color:white !important; }
+.link_menu a:hover{color:white !important; }
+#text{ color:red !important; padding:10px;  }
+#text:hover{color:white !important; }
 .center { text-align: center }

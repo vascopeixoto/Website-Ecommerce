@@ -18,16 +18,16 @@
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">Navegação </h2>
                     <ul>
-                        <li><a href="?i=sobre">Sobre</a></li>
-                        <li><a href="?i=quemsomos">Quem Somos</a></li>
-                        <li><a href="?i=contacto">Contactos</a></li>
+                        <li><a class="text-decoration-none" href="?i=sobre">Sobre</a></li>
+                        <li><a class="text-decoration-none" href="?i=quemsomos">Quem Somos</a></li>
+                        <li><a class="text-decoration-none" href="?i=contacto">Contactos</a></li>
                     </ul>                        
                 </div>
             </div>
             
             <div class="col-md-3 col-sm-6">
                 <div class="footer-menu">
-                    <h2 class="footer-wid-title">Categorias</h2>
+                    <h2 class="footer-wid-title ">Categorias</h2>
                     <ul>
                         <?php require $this->checkTemplate("categories-menu");?>                            
                     </ul>                        
@@ -62,11 +62,12 @@
 </div> <!-- End footer top area -->
 
 
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="/ecommerce/res/site/js/bootstrap.min.js"></script>
 <!-- Latest jQuery form server -->
 <script src="https://code.jquery.com/jquery.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <!-- Bootstrap JS form CDN -->
 
 <!-- jQuery sticky menu -->
@@ -78,6 +79,9 @@
 
 <!-- Main Script -->
 <script src="/ecommerce/res/site/js/main.js"></script>
+
+<!-- AdminLTE App -->
+<script src="/ecommerce/res/admin/dist/js/app.min.js"></script>
 
 <!-- Slider -->
 <script type="text/javascript" src="/ecommerce/res/site/js/bxslider.min.js"></script>

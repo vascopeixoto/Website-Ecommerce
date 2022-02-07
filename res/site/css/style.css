@@ -108,17 +108,11 @@ z-index: 999;}
 }
 .product-count {
     background: none repeat scroll 0 0 red;
-    border-radius: 50%;
+    border-radius: 20%;
     color: #fff;
-    display: inline-block;
-    font-size: 10px;
-    height: 20px;
-    padding-top: 2px;
-    position: absolute;
-    right: -10px;
-    text-align: center;
-    top: -10px;
-    width: 20px;
+    font-size: 18px;
+    height: 30px;
+    width: 30px;
 }
 .shopping-item i.fa {
     margin-left: 15px;
@@ -485,10 +479,10 @@ z-index: 999;}
   margin-left: 15px;
   padding: 1px 10px;
 }
-.thumbnail:hover {
+.img-thumbnail:hover {
     box-shadow: 0px 0px 0.11em #666;
-    -webkit-box-shadow: 0px 0px 0.11em #666;
-    -moz-box-shadow: 0px 0px 0.11em #666;
+    -webkit-box-shadow: 0px 0px 0.9em #666;
+    -moz-box-shadow: 0px 0px 0.9em #666;
     transition: 0s;
     transition-property: all;
     transition-duration: 0.2s;
