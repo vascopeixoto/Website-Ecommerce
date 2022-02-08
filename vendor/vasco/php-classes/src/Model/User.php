@@ -12,6 +12,7 @@ class User extends Model{
 	const SECRET= "VascoPHP7_Secret";
 	const ERROR= "UserError";
 	const ERROR_REGISTER = "UserErrorRegister";
+	const SUCCESS = "UserSucess";
 
 	public static function getFromSession(){
 		$user= new User();
@@ -105,7 +106,9 @@ class User extends Model{
 
 	public static function logout(){
 		$_SESSION[User::SESSION]=NULL;
+
 	}
+
 
 	public static function listAll(){
 		$sql= new Sql();
@@ -135,6 +138,21 @@ class User extends Model{
 			":desperson"=>utf8_decode($this->getdesperson()),
 			":deslogin"=>$this->getdeslogin(),
 			":despassword"=>User::getPasswordHash($this->getdespassword()),
+			":desemail"=>$this->getdesemail(),
+			":nrphone"=>$this->getnrphone(),
+			":inadmin"=>$this->getinadmin()
+		));
+
+		$this->setData($results[0]);
+	}
+	public function updateprofile(){
+		$sql= new Sql();
+
+		$results = $sql->select("CALL sp_usersupdate_save(:iduser, :desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
+			":iduser"=>$this->getiduser(),
+			":desperson"=>utf8_decode($this->getdesperson()),
+			":deslogin"=>$this->getdeslogin(),
+			":despassword"=>$this->getdespassword(),
 			":desemail"=>$this->getdesemail(),
 			":nrphone"=>$this->getnrphone(),
 			":inadmin"=>$this->getinadmin()
@@ -294,6 +312,33 @@ public static function checkLoginExist($login){
 
 	return (count($results)>0);
 }
+
+public function getOrders(){
+	$sql= new Sql();
+
+	$results = $sql->select("SELECT * FROM tb_orders a INNER JOIN tb_ordersstatus b USING(idstatus) INNER JOIN tb_carts c USING(idcart) INNER JOIN tb_users d ON d.iduser=a.iduser INNER JOIN tb_persons e ON e.idperson=d.idperson WHERE a.iduser = :iduser", array(
+		":iduser"=>$this->getiduser()
+	));
+	return $results;
+}
+
+
+
+public static function setSuccess($msg){
+	$_SESSION[User::SUCCESS]=$msg;
+}
+
+public static function getSuccess(){
+	$msg=(isset($_SESSION[User::SUCCESS]) && $_SESSION[User::SUCCESS]) ? $_SESSION[User::SUCCESS] : '';
+	User::clearSuccess();
+	return $msg;
+}
+
+public static function clearSuccess(){
+	$_SESSION[User::SUCCESS]= NULL;
+}
+
+
 
 }
 ?>

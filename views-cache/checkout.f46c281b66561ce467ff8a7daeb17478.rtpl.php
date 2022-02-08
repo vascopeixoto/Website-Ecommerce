@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="product-bit-title text-center">
-					<h2>Pagamento</h2>
+					<h2>Confirmação do pedido</h2>
 				</div>
 			</div>
 		</div>
@@ -17,14 +17,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="product-content-right">
-					<form action="/checkout" class="checkout" method="post" name="checkout">
+					<form action="/ecommerce/index.php/checkout" class="checkout" method="post" name="checkout">
 						<div id="customer_details" class="col2-set">
 							<div class="row">
 								<div class="col-md-12">
-
-									<div class="alert alert-danger">
-										Error!
-									</div>
 
 									<div class="woocommerce-billing-fields">
 										<div class="clear"></div>
@@ -38,33 +34,28 @@
 													</tr>
 												</thead>
 												<tbody>
-                                                    
+                                                    <?php $counter1=-1;  if( isset($products) && ( is_array($products) || $products instanceof Traversable ) && sizeof($products) ) foreach( $products as $key1 => $value1 ){ $counter1++; ?>
+
 													<tr class="cart_item">
 														<td class="product-name">
-															Ship Your Idea <strong class="product-quantity">× 1</strong> 
+															<?php echo htmlspecialchars( $value1["desproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <strong class="product-quantity">X <?php echo htmlspecialchars( $value1["nrqtd"], ENT_COMPAT, 'UTF-8', FALSE ); ?></strong> 
 														</td>
 														<td class="product-total">
-															<span class="amount">$700.00</span>
+															<span class="amount"><?php echo formatPrice($value1["vltotal"]); ?>€</span>
 														</td>
                                                     </tr>
-                                                    
+                                                    <?php } ?>
+
 												</tbody>
 												<tfoot>
-													<tr class="cart-subtotal">
-														<th>Subtotal</th>
-														<td><span class="amount">$700.00</span>
-														</td>
-													</tr>
-													<tr class="shipping">
-														<th>Frete</th>
-														<td>
-															$5.00
-															<input type="hidden" class="shipping_method" value="free_shipping" id="shipping_method_0" data-index="0" name="shipping_method[0]">
-														</td>
-													</tr>
+													
 													<tr class="order-total">
 														<th>Total do Pedido</th>
-														<td><strong><span class="amount">$705.00</span></strong> </td>
+														<td><strong><span class="amount"><?php echo formatPrice($cart["vltotal"]); ?>€</span></strong> </td>
+													</tr>
+													<tr>
+														<th>Será contactado via email para ser marcada uma reunião, a fim de fazer a personalização, negociação e pagamento do seu pedido.</th>
+														<td>Preço pode sofrer alterações mediante a personalização do pedido.</td>
 													</tr>
 												</tfoot>
 											</table>

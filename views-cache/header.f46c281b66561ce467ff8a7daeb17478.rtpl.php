@@ -69,7 +69,7 @@
 				</ul>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link"  id="text" aria-current="page" href="/ecommerce/index.php/cart">Carrinho - <span class="cart-amunt">R$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+				<a class="nav-link"  id="text" aria-current="page" href="/ecommerce/index.php/cart">Carrinho - <span class="cart-amunt"><?php echo getCartTotal(); ?>€</span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><?php echo getCartNrQtd(); ?></span></a>
 			</li>
 			<?php if( checkLogin(false) ){ ?>
 
@@ -91,13 +91,4 @@
 
 		</div>
 	</nav>
-</header>
-
-
-			 
-			</ul>
-			
-		  </div>
-		</div>
-	  </nav>
 </header>

@@ -3,8 +3,10 @@ use \vasco\Page;
 use \vasco\Model\Category;
 use \vasco\Model\Product;
 use \vasco\Model\Cart;
-use \vasco\Model\Address;
+use \vasco\Model\Order;
+use \vasco\Model\OrderStatus;
 use \vasco\Model\User;
+
 
 
 $app->get('/', function() {
@@ -43,7 +45,7 @@ $app->get('/cart',function(){
 	$page= new Page();
 	$page->setTpl("cart",[
 		'cart'=>$cart->getValues(),
-		'products'=>$cart->getProducts(),
+		'product'=>$cart->getProducts(),
 		'error'=>Cart::getMsgError()
 	]);
 });
@@ -82,13 +84,72 @@ $app->get('/cart/:idproduct/remove',function($idproduct){
 $app->get('/ecommerce/index.php/checkout',function(){
 	User::verifyLogin(false);
 	$cart=Cart::getFromSession();
-	$address = new Address();
 	$page= new Page();
 	$page->setTpl("checkout",[
 		'cart'=>$cart->getValues(),
-		'address'=>$address->getValues()
+		'products'=>$cart->getProducts()
 	]);
 });
+
+$app->post('/checkout', function(){
+
+	User::verifyLogin(false);
+	$user=User::getFromSession();
+
+	$cart=Cart::getFromSession();
+	$cart->getCalculateTotal();
+
+	$order= new Order();
+
+	$order->setData([
+		'idcart'=>$cart->getidcart(),
+		'iduser'=>$user->getiduser(),
+		'idstatus'=>OrderStatus::EM_ABERTO,
+		'vltotal'=>$cart->getvltotal()
+	]);
+	$order->save();
+	header("Location: /ecommerce/index.php/order/".$order->getidorder());
+	exit;
+});
+
+$app->get('/order/:idorder',function($idorder){
+	User::verifyLogin(false);
+	$order= new Order;
+	$order->get((int)$idorder);
+	$page= new Page();
+	$page->setTpl("payment",[
+		'order'=>$order->getValues()
+	]);
+	Cart::removeToSession();
+	session_regenerate_id();
+});
+
+$app->get("/profile/orders", function (){
+	User::verifyLogin(false);
+	$page= new Page();
+	$user=User::getFromSession();
+	$page->setTpl("profile-orders",[
+		'orders'=>$user->getOrders()
+	]);
+});
+
+$app->get("/profile/orders/:idorder", function ($idorder){
+	User::verifyLogin(false);
+	$order=new Order();
+	$order->get((int)$idorder);
+
+	$cart= new Cart();
+	$cart->get((int)$order->getidcart());
+	$cart->getCalculateTotal();
+
+	$page= new Page();
+	$page->setTpl("profile-orders-detail",[
+		'order'=>$order->getValues(),
+		'cart'=>$cart->getValues(),
+		'products'=>$cart->getProducts()
+	]);
+});
+
 $app->get('/login',function(){
 
 	$page= new Page();
@@ -104,13 +165,17 @@ $app->post('/login',function(){
 		User::login($_POST['login'], $_POST['password']);
 	}catch(Exception $e){
 		User::setError($e->getMessage());
+		header("Location: /ecommerce/index.php/login");
+		exit;
 	}
-	header("Location: /ecommerce/index.php");
+	header("Location: /ecommerce/index.php/cart");
 	exit;
 });
 
 $app->get('/logout',function(){
 	User::logout();
+	Cart::removeToSession();
+	session_regenerate_id();
 	header("Location: /ecommerce/index.php/login");
 	exit;
 });
@@ -154,6 +219,106 @@ $app->post('/register',function(){
 
 	User::login($_POST['email'], $_POST['password']);
 	header("Location: /ecommerce/index.php");
+	exit;
+});
+
+
+
+$app->get('/forgot', function(){
+	$page= new Page();
+	$page->setTpl("forgot");
+
+});
+
+$app->post("/forgot", function(){
+	$user = User::getForgot($_POST["email"], false);
+
+	header("Location: /ecommerce/index.php/forgot/sent");
+	exit;
+});
+
+$app->get('/forgot/sent', function(){
+	$page= new Page();
+
+	$page->setTpl("forgot-sent");
+});
+
+$app->get('/forgot/reset', function(){
+	$user=User::validForgotDecrypt($_GET["code"]);
+
+	$page= new Page();
+
+	$page->setTpl("forgot-reset", array(
+		"name"=>$user["desperson"],
+		"code"=>$_GET["code"]
+	));
+});
+
+$app->post("/forgot/reset", function(){
+	$forgot=User::validForgotDecrypt($_POST["code"]);
+
+	User::setForgotUsed($forgot["idrecovery"]);
+
+	$user= new User();
+
+	$user->get((int)$forgot["iduser"]);
+	
+	$options = [
+		'cost' => 12,
+	];
+	$password= password_hash($_POST["password"], PASSWORD_DEFAULT, $options);
+
+	$user->setPassword($password);
+
+	$page= new Page();
+
+	$page->setTpl("forgot-reset-success");
+
+});
+
+$app->get("/profile", function(){
+	User::verifyLogin(false);
+	$user=User::getFromSession();
+	$page = new Page();
+	$page->setTpl("profile",[
+		'user'=>$user->getValues(),
+		'profileMsg'=>User::getSuccess(),
+		'profileError'=>User::getError()
+
+	]);
+});
+
+$app->post("/profile", function(){
+	User::verifyLogin(false);
+	if(!isset($_POST['desperson']) || $_POST['desperson'] ===''){
+		User::setError("Preencha o sue nome.");
+		header("Location: /ecommerce/index.php/profile");
+		exit;
+	}
+	if(!isset($_POST['desemail']) || $_POST['desemail'] ===''){
+		User::setError("Preencha o sue email.");
+		header("Location: /ecommerce/index.php/profile");
+		exit;
+	}
+	$user=User::getFromSession();
+
+	if($_POST['desemail'] !==$user->getdesemail()){
+		if(User::checkLoginExist($_POST['desemail'])){
+			User::setError("Email já está a ser utilizado.");
+			header("Location: /ecommerce/index.php/profile");
+			exit;
+		}
+	}
+
+	$_POST['iduser']=$user->getiduser();
+	$_POST['inadmin']=$user->getinadmin();
+	$_POST['despassword']=$user->getdespassword();
+	$_POST['deslogin']=$_POST['desemail'];
+	$user->setData($_POST);
+	$user->updateprofile();
+	$_SESSION[User::SESSION]=$user->getValues();
+	User::setSuccess("Dados Alterados com Sucesso");
+	header("Location: /ecommerce/index.php/profile");
 	exit;
 });
 

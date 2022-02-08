@@ -36,6 +36,7 @@ $app->post('/admin/login', function(){
 
 $app->get('/admin/logout', function(){
 	User::logout();
+	session_regenerate_id();
 	header("Location: /ecommerce/index.php/admin/login");
 	exit;
 });
