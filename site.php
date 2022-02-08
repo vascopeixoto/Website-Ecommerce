@@ -322,5 +322,61 @@ $app->post("/profile", function(){
 	exit;
 });
 
+$app->get("/profile/change-password", function(){
+	User::verifyLogin(false);
+	$page = new Page();
+	$page->setTpl("profile-change-password",[
+		'changePassError'=>User::getError(),
+		'changePassSuccess'=>User::getSuccess()
+	]);
+});
+
+$app->post("/profile/change-password", function(){
+	User::verifyLogin(false);
+	if(!isset($_POST['current_pass']) || $_POST['current_pass']===''){
+		User::setError("Escreva a password atual");
+		header("Location: /ecommerce/index.php/profile/change-password");
+		exit;
+	}
+
+	if(!isset($_POST['new_pass']) || $_POST['new_pass']===''){
+		User::setError("Escreva a nova password");
+		header("Location: /ecommerce/index.php/profile/change-password");
+		exit;
+	}
+
+	if(!isset($_POST['new_pass_confirm']) || $_POST['new_pass_confirm']===''){
+		User::setError("Confirme a nova password");
+		header("Location: /ecommerce/index.php/profile/change-password");
+		exit;
+	}
+
+	if($_POST['current_pass']=== $_POST['new_pass']){
+		User::setError("A nova password deve ser diferente da atual");
+		header("Location: /ecommerce/index.php/profile/change-password");
+		exit;
+	}
+
+	if($_POST['new_pass'] != $_POST['new_pass_confirm']){
+		User::setError("A confirmação deve ser igual à nova password");
+		header("Location: /ecommerce/index.php/profile/change-password");
+		exit;
+	}
+
+	$user=User::getFromSession();
+
+	if(!password_verify($_POST['current_pass'], $user->getdespassword())){
+		User::setError("Password inválida");
+		header("Location: /ecommerce/index.php/profile/change-password");
+		exit;
+	}
+
+	$user->setdespassword($_POST['new_pass']);
+	$user->update();
+
+	User::setSuccess("Password alterada com Sucesso");
+	header("Location: /ecommerce/index.php/profile/change-password");
+		exit;
+});
 ?>
 
