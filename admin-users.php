@@ -3,11 +3,36 @@ use \vasco\PageAdmin;
 use \vasco\Model\User;
 $app->get("/admin/users", function(){
 	User::verifyLogin();
-	$user = User::listAll();
+
+	$search=(isset($_GET['search']))? $_GET['search']: "";
+	$page=(isset($_GET['page']))? (int)$_GET['page']: 1;
+
+	if($search !=''){
+		$pagination = User::getPageSearch($search, $page);
+
+	}else{
+		$pagination= User::getPage($page);
+	}
+
+
+	$pages=[];
+	for($i = 0; $i < $pagination['pages']; $i++){
+		array_push($pages, [
+			'href'=>'/ecommerce/index.php/admin/users?'.http_build_query([
+				'page'=>$i+1,
+				'search'=>$search
+			]),
+			'text'=>$i+1
+		]);
+	}
 
 	$page = new PageAdmin;
 
-	$page->setTpl("users", array("users"=>$user));
+	$page->setTpl("users", array(
+		"users"=>$pagination['data'],
+		"search"=>$search,
+		"pages"=>$pages
+	));
 });
 
 $app->get("/admin/users/create", function(){
