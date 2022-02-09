@@ -1,6 +1,50 @@
 <?php
 use \vasco\PageAdmin;
 use \vasco\Model\User;
+
+$app->get("/admin/users/:iduser/password", function($iduser){
+	User::verifyLogin();
+	$user = new User;
+	$user->get((int)$iduser);
+
+	$page = new PageAdmin();
+	$page->setTpl("users-password",[
+		'user'=>$user->getValues(),
+		'msgError'=>User::getError(),
+		'msgSuccess'=>User::getSuccess()
+	]);
+});
+
+$app->post("/admin/users/:iduser/password", function($iduser){
+	User::verifyLogin();
+	if(!isset($_POST['despassword']) || $_POST['despassword']===''){
+		User::setError("Escreva a nova password");
+		header("Location: /ecommerce/index.php/admin/users/".$iduser."/password");
+		exit;
+	}
+
+	if(!isset($_POST['despassword-confirm']) || $_POST['despassword-confirm']===''){
+		User::setError("Confirme a nova password");
+		header("Location: /ecommerce/index.php/admin/users/".$iduser."/password");
+		exit;
+	}
+	if($_POST['despassword'] != $_POST['despassword-confirm']){
+		User::setError("A confirmação deve ser igual à nova password");
+		header("Location: /ecommerce/index.php/admin/users/".$iduser."/password");
+		exit;
+	}
+
+	$user=User::getFromSession();
+
+	$user->setPassword(User::getPasswordHash($_POST['despassword']));
+
+	User::setSuccess("Password alterada com Sucesso");
+	header("Location: /ecommerce/index.php/admin/users/".$iduser."/password");
+	exit;
+});
+
+
+
 $app->get("/admin/users", function(){
 	User::verifyLogin();
 
