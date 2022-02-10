@@ -207,12 +207,19 @@ $app->post('/register',function(){
 	}
 
 	$user= new User();
+
+	$pass = password_hash($_POST["password"], PASSWORD_DEFAULT, [
+
+		"cost"=>12
+
+	]);
+
 	$user->setData([
 		'inadmin'=>0,
 		'deslogin'=>$_POST['email'],
 		'desperson'=>$_POST['name'],
 		'desemail'=>$_POST['email'],
-		'despassword'=>$_POST['password'],
+		'despassword'=>$pass,
 		'nrphone'=>(int)$_POST['phone']
 	]);
 	$user->save();
@@ -315,7 +322,7 @@ $app->post("/profile", function(){
 	$_POST['despassword']=$user->getdespassword();
 	$_POST['deslogin']=$_POST['desemail'];
 	$user->setData($_POST);
-	$user->updateprofile();
+	$user->update();
 	$_SESSION[User::SESSION]=$user->getValues();
 	User::setSuccess("Dados Alterados com Sucesso");
 	header("Location: /ecommerce/index.php/profile");
@@ -371,7 +378,11 @@ $app->post("/profile/change-password", function(){
 		exit;
 	}
 
-	$user->setdespassword($_POST['new_pass']);
+	$pass = password_hash($_POST["new_pass"], PASSWORD_DEFAULT, [
+		"cost"=>12
+	]);
+
+	$user->setdespassword($pass);
 	$user->update();
 
 	User::setSuccess("Password alterada com Sucesso");

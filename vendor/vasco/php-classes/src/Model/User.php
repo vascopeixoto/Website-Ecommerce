@@ -70,6 +70,22 @@ class User extends Model{
 		}
 
 		$data = $results[0];
+/*
+		$pass= password_hash("123456", PASSWORD_DEFAULT,[
+			'cost'=>12
+		]);
+
+		echo($password);
+		echo "<br>";
+		echo($pass);
+
+		if(password_verify($password,$pass)){
+			
+			echo "<br>";
+			echo "deu";
+		}
+		exit;
+		*/
 
 		if (password_verify($password, $data["despassword"]) === true) {
 
@@ -121,7 +137,7 @@ class User extends Model{
 		$results = $sql->select("CALL sp_users_save(:desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
 			":desperson"=>utf8_decode($this->getdesperson()),
 			":deslogin"=>$this->getdeslogin(),
-			":despassword"=>User::getPasswordHash($this->getdespassword()),
+			":despassword"=>$this->getdespassword(),
 			":desemail"=>$this->getdesemail(),
 			":nrphone"=>$this->getnrphone(),
 			":inadmin"=>$this->getinadmin()
@@ -131,21 +147,6 @@ class User extends Model{
 	}
 
 	public function update(){
-		$sql= new Sql();
-
-		$results = $sql->select("CALL sp_usersupdate_save(:iduser, :desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
-			":iduser"=>$this->getiduser(),
-			":desperson"=>utf8_decode($this->getdesperson()),
-			":deslogin"=>$this->getdeslogin(),
-			":despassword"=>User::getPasswordHash($this->getdespassword()),
-			":desemail"=>$this->getdesemail(),
-			":nrphone"=>$this->getnrphone(),
-			":inadmin"=>$this->getinadmin()
-		));
-
-		$this->setData($results[0]);
-	}
-	public function updateprofile(){
 		$sql= new Sql();
 
 		$results = $sql->select("CALL sp_usersupdate_save(:iduser, :desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
@@ -282,12 +283,6 @@ public static function getError(){
 
 public static function clearError(){
 	$_SESSION[User::ERROR]= NULL;
-}
-
-public static function getPasswordHash($password){
-	return password_hash($password, PASSWORD_DEFAULT,[
-		'cost'=>12
-	]);
 }
 
 public static function setRegisterError($msg){

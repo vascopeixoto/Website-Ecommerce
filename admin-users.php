@@ -34,9 +34,16 @@ $app->post("/admin/users/:iduser/password", function($iduser){
 		exit;
 	}
 
-	$user=User::getFromSession();
+	$user= new User();
+	$user->get((int)$iduser);
 
-	$user->setPassword(User::getPasswordHash($_POST['despassword']));
+	$pass = password_hash($_POST["despassword"], PASSWORD_DEFAULT, [
+
+		"cost"=>12
+
+	]);
+
+	$user->setPassword($pass);
 
 	User::setSuccess("Password alterada com Sucesso");
 	header("Location: /ecommerce/index.php/admin/users/".$iduser."/password");
