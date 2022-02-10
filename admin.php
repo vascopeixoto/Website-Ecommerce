@@ -1,6 +1,7 @@
 <?php
 use \vasco\PageAdmin;
 use \vasco\Model\User;
+use \vasco\Model\Order;
 
 
 
@@ -8,7 +9,10 @@ $app->get('/admin', function() {
 	User::verifyLogin();
 
 	$page = new PageAdmin();
-	$page->setTpl("index");
+	$page->setTpl("index",[
+		'order'=>Order::total(),
+		'user'=>User::total()
+	]);
 
 
 });

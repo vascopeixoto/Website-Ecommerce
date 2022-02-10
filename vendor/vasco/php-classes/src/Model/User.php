@@ -10,6 +10,7 @@ class User extends Model{
 
 	const SESSION= "User";
 	const SECRET= "VascoPHP7_Secret";
+	const SECRET_IV= "VascoPHP7_Secret_IV";
 	const ERROR= "UserError";
 	const ERROR_REGISTER = "UserErrorRegister";
 	const SUCCESS = "UserSucess";
@@ -130,6 +131,13 @@ class User extends Model{
 		$sql= new Sql();
 		return $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) ORDER BY b.idperson");
 	}
+	
+	public static function total(){
+        $sql= new Sql();
+
+		$results=$sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) ORDER BY b.idperson");
+		return count($results);
+	}
 
 	public function save(){
 		$sql= new Sql();
@@ -206,13 +214,12 @@ class User extends Model{
 			throw new \Exception("Não foi possivel recuperar a password.");		 
 		 }else{
 			 $dataRecovery=$results2[0];
-			 $iv = random_bytes(openssl_cipher_iv_length('aes-256-cbc'));
-             $code = openssl_encrypt($dataRecovery['idrecovery'], 'aes-256-cbc', User::SECRET, 0, $iv);
-             $result = base64_encode($iv.$code);
+			 $code = openssl_encrypt($dataRecovery['idrecovery'], 'AES-128-CBC', pack("a16", User::SECRET), 0, pack("a16", User::SECRET_IV));
+			 $code = base64_encode($code);
              if ($inadmin === true) {
-                 $link = "http://www.projetotw.com/ecommerce/index.php/admin/forgot/reset?code=$result";
+                 $link = "http://www.projetotw.com/ecommerce/index.php/admin/forgot/reset?code=$code";
              } else {
-                 $link = "http://www.projetotw.com/ecommerce/index.php/forgot/reset?code=$result";
+                 $link = "http://www.projetotw.com/ecommerce/index.php/forgot/reset?code=$code";
              } 
              	$mailer = new Mailer($data['desemail'], $data['desperson'], "Redefinir password de TW", "forgot", array(
                  "name"=>$data['desperson'],
@@ -220,15 +227,14 @@ class User extends Model{
              )); 
              $mailer->send();
              return $link;
+
          }
      }
  
- public static function validForgotDecrypt($result)
+ public static function validForgotDecrypt($code)
  {
-     $result = base64_decode($result);
-     $code = mb_substr($result, openssl_cipher_iv_length('aes-256-cbc'), null, '8bit');
-     $iv = mb_substr($result, 0, openssl_cipher_iv_length('aes-256-cbc'), '8bit');;
-     $idrecovery = openssl_decrypt($code, 'aes-256-cbc', User::SECRET, 0, $iv);
+	$code = base64_decode($code);
+	$idrecovery = openssl_decrypt($code, 'AES-128-CBC', pack("a16", User::SECRET), 0, pack("a16", User::SECRET_IV));
      $sql = new Sql();
      $results = $sql->select("
          SELECT *
@@ -244,6 +250,7 @@ class User extends Model{
      ", array(
          ":idrecovery"=>$idrecovery
      ));
+
      if (count($results) === 0)
      {
          throw new \Exception("Não foi possível recuperar a senha.");

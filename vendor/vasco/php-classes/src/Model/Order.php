@@ -44,6 +44,12 @@ class Order extends Model{
 
 		return  $sql->select("SELECT * FROM tb_orders a INNER JOIN tb_ordersstatus b USING(idstatus) INNER JOIN tb_carts c USING(idcart) INNER JOIN tb_users d ON d.iduser=a.iduser INNER JOIN tb_persons e ON e.idperson=d.idperson ORDER BY a.dtregister DESC");
     }
+	public static function total(){
+        $sql= new Sql();
+
+		$results=$sql->select("SELECT * FROM tb_orders a INNER JOIN tb_ordersstatus b USING(idstatus) INNER JOIN tb_carts c USING(idcart) INNER JOIN tb_users d ON d.iduser=a.iduser INNER JOIN tb_persons e ON e.idperson=d.idperson ORDER BY a.dtregister DESC");
+		return count($results);
+	}
 
 	public function  delete(){
         $sql= new Sql();
