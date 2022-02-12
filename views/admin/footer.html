@@ -15,6 +15,20 @@
 <script src="/ecommerce/res/admin/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/ecommerce/res/admin/dist/js/app.min.js"></script>
+<script type="text/javascript">
+  $('textarea').keyup(function() {  
+    
+    var characterCount = $(this).val().length,
+        current = $('#current'),
+        maximum = $('#maximum'),
+        theCount = $('#the-count');
+      
+    current.text(characterCount);
+      maximum.css('color','#666');
+      theCount.css('font-weight','normal')
+  });
+
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

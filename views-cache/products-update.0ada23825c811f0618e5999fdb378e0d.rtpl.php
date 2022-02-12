@@ -1,4 +1,4 @@
-<!-- Content Wrapper. Contains page content -->
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -18,19 +18,19 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" action="/ecommerce/index.php/admin/products/{$product.idproduct}" method="post" enctype="multipart/form-data">
+        <form role="form" action="/ecommerce/index.php/admin/products/<?php echo htmlspecialchars( $product["idproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" method="post" enctype="multipart/form-data">
           <div class="box-body">
             <div class="form-group">
               <label for="desproduct">Nome da produto</label>
-              <input type="text" class="form-control" id="desproduct" name="desproduct" placeholder="Escreva o nome do produto" value="{$product.desproduct}">
+              <input type="text" class="form-control" id="desproduct" name="desproduct" placeholder="Escreva o nome do produto" value="<?php echo htmlspecialchars( $product["desproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             </div>
             <div class="form-group">
               <label for="vlprice">Preço</label>
-              <input type="number" class="form-control" id="vlprice" name="vlprice" step="0.01" placeholder="0.00" value="{$product.vlprice}">
+              <input type="number" class="form-control" id="vlprice" name="vlprice" step="0.01" placeholder="0.00" value="<?php echo htmlspecialchars( $product["vlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             </div>
             <div class="form-group">
               <label for="descricao">Descrição</label>
-              <textarea cols="num" rows="num" maxlength="1000" class="form-control" style="resize: none; width:100%; height: 150px;" id="descricao" name="descricao" placeholder="Escreva a descrição do produto">{$product.descricao}</textarea>
+              <textarea cols="num" rows="num" maxlength="1000" class="form-control" style="resize: none; width:100%; height: 150px;" id="descricao" name="descricao" placeholder="Escreva a descrição do produto"><?php echo htmlspecialchars( $product["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
               <div id="the-count">
                 <span id="current">0</span>
                 <span id="maximum">/ 1000</span>
@@ -41,7 +41,7 @@
               <input type="file" class="form-control" id="file" name="file" >
               <div class="box box-widget">
                 <div class="box-body">
-                  <img class="img-responsive" id="image-preview" src="{$product.desphoto}" alt="Photo">
+                  <img class="img-responsive" id="image-preview" src="<?php echo htmlspecialchars( $product["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Photo">
                 </div>
               </div>
             </div>

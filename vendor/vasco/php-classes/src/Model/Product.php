@@ -24,14 +24,17 @@ class Product extends Model{
 	public function save(){
 
 		$sql= new Sql();
-		$results = $sql->select("CALL sp_products_save(:idproduct, :desproduct, :vlprice, :desurl)", array(
+
+		$results = $sql->select("CALL sp_products_save(:idproduct, :desproduct, :vlprice, :descricao, :desurl)", array(
 			":idproduct"=>$this->getidproduct(),
 			":desproduct"=>$this->getdesproduct(),
             ":vlprice"=>$this->getvlprice(),
+			":descricao"=>$this->getdescricao(),
             ":desurl"=>$this->getdesurl()
 		));
 
 		$this->setData($results[0]);
+	
 
 	}
 

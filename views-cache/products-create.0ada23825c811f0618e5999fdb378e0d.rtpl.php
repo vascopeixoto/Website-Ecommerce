@@ -1,4 +1,4 @@
-<!-- Content Wrapper. Contains page content -->
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
               <label for="descricao">Descrição</label>
-              <textarea cols="num" rows="num" maxlength="1000" class="form-control" style="resize: none; width:100%; height: 170px;" id="descricao" name="descricao" placeholder="Escreva a descrição do produto"></textarea>
+              <textarea cols="num" rows="num" maxlength="1000" class="form-control" style="resize: none; width:100%; height: 200px;" id="descricao" name="descricao" placeholder="Escreva a descrição do produto"></textarea>
               <div id="the-count">
                 <span id="current">0</span>
                 <span id="maximum">/ 1000</span>

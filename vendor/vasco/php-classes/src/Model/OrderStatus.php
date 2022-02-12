@@ -9,6 +9,7 @@ class OrderStatus extends Model{
     const AGUARDANDO_PAGAMENTO = 2;
     const PAGO = 3;
     const SERVICO_PRESTADO = 4;
+    const CANCELADO = 5;
    
 
     public static function  listAll(){
