@@ -55,9 +55,10 @@
 				  Empresa
 				</a>
 				<ul class="dropdown-menu dropdown-menu-dark link_menu " aria-labelledby="navbarDropdown">
-					<li><a class="text-decoration-none" href="?i=sobre">Sobre</a></li>
-					<li><a class="text-decoration-none" href="?i=quemsomos">Quem Somos</a></li>
-					<li><a class="text-decoration-none" href="?i=contacto">Contactos</a></li>
+					<li><a class="text-decoration-none" href="/ecommerce/index.php/historia">História</a></li>
+					<li><a class="text-decoration-none" href="/ecommerce/index.php/missao">Missão|Visão </a></li>
+					<li><a class="text-decoration-none" href="/ecommerce/index.php/estrategia">Estratégia|Valores </a></li>
+					<li><a class="text-decoration-none" href="/ecommerce/index.php/contactos">Contactos</a></li>
 				</ul>
 			  </li>
 			  <li class="nav-item dropdown">

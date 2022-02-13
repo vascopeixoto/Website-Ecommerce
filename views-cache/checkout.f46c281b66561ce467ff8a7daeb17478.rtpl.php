@@ -29,7 +29,7 @@
 											<table class="shop_table">
 												<thead>
 													<tr>
-														<th class="product-name">Produto</th>
+														<th class="product-name">Produto/ Serviço</th>
 														<th class="product-total">Total</th>
 													</tr>
 												</thead>

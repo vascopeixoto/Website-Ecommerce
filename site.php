@@ -17,6 +17,26 @@ $app->get('/', function() {
 	]);
 
 });
+$app->get('/historia', function() {
+	$page = new Page();
+	$page->setTpl("historia");
+
+});
+$app->get('/contactos', function() {
+	$page = new Page();
+	$page->setTpl("contactos");
+
+});
+$app->get('/estrategia', function() {
+	$page = new Page();
+	$page->setTpl("estrategia");
+
+});
+$app->get('/missao', function() {
+	$page = new Page();
+	$page->setTpl("missao");
+
+});
 
 $app->get('/categories/:idcategory', function($idcategory){
 	$categories = new Category();

@@ -1,16 +1,25 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?><div id="main" >
-	
-	<div class="container">
-		<div class="row">
+		
+		<video autoplay muted loop id="myVideo">
+			<source src="/ecommerce/res/site/img/twvid.mp4" type="video/mp4"> 
+		</video> 
+		<div class="content">
+			<h1>Truck & Wheel</h1>
+				<P>sfdh</P>
+			<!-- Use a button to pause/play the video with JavaScript -->
+			<button id="myBtn" onclick="myFunction()">Pause</button>
+		</div>	
+
+
+	<div class="container" >
+		<div class="row" style="margin-top: -150px;">
 			<div class="col-md-5 col-xs-12">
-				
 				<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 					<div class="carousel-indicators">
 					  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 					  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
 					  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
 					  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-
 					</div>
 					<div class="carousel-inner">
 					  <div class="carousel-item active">
@@ -61,36 +70,13 @@
 	</div>
 </div>
 	<div class="container" style="margin-top: 30px; margin-bottom: 30px;">
-
-		<div class="row"> 
+		<div class="row "> 
 			<div class="col-sm-6 col-md-4"> 
-				<div class="img-thumbnail"> 
-					<img id="imagens" src="/ecommerce/res/site/img/f1.jpeg" > 
-
-					<div class="caption"> 
-						<h3>Sobre</h3> 
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet risus ligula. Mauris pretium magna nec porttitor vulputate.</p> 
-						<p><a href="?i=sobre" class="btn btn-danger" role="button">Ler mais</a> 
-					</div> 
-				</div> 
-			</div> 
-
-			<div class="col-sm-6 col-md-4"> 
-				<div class="img-thumbnail"> 
-					<img id="imagens" src="/ecommerce/res/site/img/f2.webp"> 
-					<div class="caption"> 
-						<h3>Quem Somos</h3> 
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet risus ligula. Mauris pretium magna nec porttitor vulputate.</p> <p><a href="?i=quemsomos" class="btn btn-danger" role="button">Ler mais</a>
-					</div> 
-				</div> 
-			</div> 
-			
-			<div class="col-sm-6 col-md-4"> 
-				<div class="img-thumbnail"> 
+				<div class="img-thumbnail" style="text-align: center; margin-bottom: 20px;"> 
 					<img id="imagens" src="/ecommerce/res/site/img/f3.jpeg"> 
 					<div class="caption"> 
 						<h3>Contactos</h3> 
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet risus ligula. Mauris pretium magna nec porttitor vulputate.</p> <p><a href="?i=contacto" class="btn btn-danger" role="button">Ler mais</a>
+						<p><a href="/ecommerce/index.php/contactos" class="btn btn-danger" role="button">Ler mais</a>
 					</div> 
 				</div> 
 			</div> 
@@ -129,4 +115,23 @@
 		</div>
 	</div>
 </div> <!-- End main content area -->
+
+<script>
+	// Get the video
+	var video = document.getElementById("myVideo");
+	
+	// Get the button
+	var btn = document.getElementById("myBtn");
+	
+	// Pause and play the video, and change the button text
+	function myFunction() {
+	  if (video.paused) {
+		video.play();
+		btn.innerHTML = "Pause";
+	  } else {
+		video.pause();
+		btn.innerHTML = "Play";
+	  }
+	}
+	</script>
 
