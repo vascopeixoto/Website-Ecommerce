@@ -71,22 +71,6 @@ class User extends Model{
 		}
 
 		$data = $results[0];
-/*
-		$pass= password_hash("123456", PASSWORD_DEFAULT,[
-			'cost'=>12
-		]);
-
-		echo($password);
-		echo "<br>";
-		echo($pass);
-
-		if(password_verify($password,$pass)){
-			
-			echo "<br>";
-			echo "deu";
-		}
-		exit;
-		*/
 
 		if (password_verify($password, $data["despassword"]) === true) {
 
@@ -119,6 +103,25 @@ class User extends Model{
 				exit;
 			}
 		} 
+	}
+
+	public static function testloginadmin()
+	{
+		if(User::checkLogin()===true ){
+			
+				header("Location: /ecommerce/index.php/admin");
+				exit;
+		}
+		
+	}
+	public static function testlogin()
+	{
+		if(User::checkLogin()===true ){
+			
+				header("Location: /ecommerce/index.php");
+				exit;
+		}
+		
 	}
 
 	public static function logout(){

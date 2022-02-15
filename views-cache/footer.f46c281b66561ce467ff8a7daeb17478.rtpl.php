@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div class="footer-about-us">
-                    <h2>Truck and Wheel</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                    <h2 class="footer-wid-title">Truck and Wheel</h2>
+                    <p> Uma referência no setor da logística, somos um grupo multinacional que conta com uma magnífica equipa de profissionais com ampla experiência no mundo da logística. A nossa aposta por valores como o ID, a integração no âmbito social e a qualidade competitiva, tem-nos permitido crescer até chegar a ser uma das principais referências no sector.</p>
                     <div class="footer-social">
                         <a href="https://www.facebook.com/hcodebr" target="_blank"><i class="fa fa-facebook"></i></a>
                         <a href="https://twitter.com/hcodebr" target="_blank"><i class="fa fa-twitter"></i></a>
@@ -18,9 +18,9 @@
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">Navegação </h2>
                     <ul>
-                        <li><a class="text-decoration-none" href="?i=sobre">Sobre</a></li>
-                        <li><a class="text-decoration-none" href="?i=quemsomos">Quem Somos</a></li>
-                        <li><a class="text-decoration-none" href="?i=contacto">Contactos</a></li>
+                        <li><a class="text-decoration-none dropdown-item" href="?i=sobre">Sobre</a></li>
+                        <li><a class="text-decoration-none dropdown-item" href="?i=quemsomos">Quem Somos</a></li>
+                        <li><a class="text-decoration-none dropdown-item" href="?i=contacto">Contactos</a></li>
                     </ul>                        
                 </div>
             </div>
@@ -36,14 +36,11 @@
 
             <div class="col-md-3 col-sm-6">
                 <div class="footer-newsletter">
-                    <h2 class="footer-wid-title">Newsletter</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus!</p>
-                    <div class="newsletter-form">
-                        <form action="#">
-                            <input type="email" placeholder="Type your email">
-                            <input type="submit" value="Subscribe">
-                        </form>
-                    </div>
+                    <h2 class="footer-wid-title">Contactos</h2>
+				<p>Rua da Misericórdia, Lote 7, Fração C, nº 295</p>
+				<p>4410-528 Canelas</p>
+				<p>Telefone: (+351) 229 940 619</p>
+				<p>E-mail: suporte@tw-group.com</p>
                 </div>
             </div>
             

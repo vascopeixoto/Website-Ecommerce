@@ -102,10 +102,8 @@ z-index: 999;}
 .shopping-item a {
     color: #666;
 }
-.cart-amunt {
-    color: rgb(255, 255, 255);
-    font-weight: 700;
-}
+
+.cart{color:white !important; }
 .product-count {
     background: none repeat scroll 0 0 red;
     border-radius: 20%;
@@ -710,8 +708,10 @@ width: 10px;
 
 #myVideo {
     margin-top: 50px;
-width: 1920px;
-height: 1080px;
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    z-index: -100;
 }
 
 /* Add some content at the bottom of the video/page */
@@ -720,9 +720,9 @@ height: 1080px;
   background: rgba(0, 0, 0, 0.5);
   color: #f1f1f1;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   z-index: 2; 
-bottom: 650px;
+bottom: 200px;
 text-align: center;
 }
 
@@ -939,6 +939,9 @@ text-transform: uppercase;}
   top: -56px;
 }
 
+.amount{
+    color: black;
+}
 
 
 table.shop_table {
@@ -954,7 +957,8 @@ table.shop_table th, table.shop_table td {
     text-align: center;
 }
 table.shop_table th {
-    background: none repeat scroll 0 0 #f4f4f4;
+    background: none repeat scroll 0 0 #525252;
+    color: white;
     font-size: 15px;
     text-transform: uppercase;
 }

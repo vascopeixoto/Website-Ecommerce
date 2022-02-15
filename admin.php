@@ -18,6 +18,7 @@ $app->get('/admin', function() {
 });
 
 $app->get('/admin/login', function(){
+	User::testloginadmin();
 	$page= new PageAdmin([
 		"header"=> false,
 		"footer"=> false
@@ -39,7 +40,9 @@ $app->post('/admin/login', function(){
 });
 
 $app->get('/admin/logout', function(){
+	
 	User::logout();
+	User::testloginadmin(false);
 	session_regenerate_id();
 	header("Location: /ecommerce/index.php/admin/login");
 	exit;

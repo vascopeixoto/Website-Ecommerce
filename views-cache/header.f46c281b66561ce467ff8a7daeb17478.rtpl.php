@@ -46,46 +46,72 @@
 			<span class="navbar-toggler-icon"></span>
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 			  <li class="nav-item">
-				<a class="nav-link active" id="text" aria-current="page" href="/ecommerce/index.php">Home</a>
+				<a class="nav-link "></a>
 			  </li>
 			  <li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" id="text" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 				  Empresa
 				</a>
 				<ul class="dropdown-menu dropdown-menu-dark link_menu " aria-labelledby="navbarDropdown">
-					<li><a class="text-decoration-none" href="/ecommerce/index.php/historia">História</a></li>
-					<li><a class="text-decoration-none" href="/ecommerce/index.php/missao">Missão|Visão </a></li>
-					<li><a class="text-decoration-none" href="/ecommerce/index.php/estrategia">Estratégia|Valores </a></li>
-					<li><a class="text-decoration-none" href="/ecommerce/index.php/contactos">Contactos</a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/historia">História</a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/missao">Missão e Visão </a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/estrategia">Estratégia e Valores </a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/setor">Soluções Setoriais</a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/contactos">Contactos</a></li>
 				</ul>
 			  </li>
 			  <li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" id="text" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-				  Categorias
+				  Logística
 				</a>
 				<ul class="dropdown-menu dropdown-menu-dark link_menu " aria-labelledby="navbarDropdown">
-				  <?php require $this->checkTemplate("categories-menu");?>  
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/twms">TWMS</a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/warehousing">Warehousing </a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/4pl">4PL</a></li>
 				</ul>
 			  </li>
-			  <li class="nav-item">
-				<a class="nav-link"  id="text" aria-current="page" href="/ecommerce/index.php/cart">Carrinho - <span class="cart-amunt"><?php echo getCartTotal(); ?>€</span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><?php echo getCartNrQtd(); ?></span></a>
-			</li>
-			<?php if( checkLogin(false) ){ ?>
+			  <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" id="text" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  Distribuição
+				</a>
+				<ul class="dropdown-menu dropdown-menu-dark link_menu " aria-labelledby="navbarDropdown">
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/carga">Carga Completa</a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/expnot">Distribuição Expresso e Noturna</a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/palete">Distribuição À Palete</a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/cisternas">Cisternas</a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/cisternas">Basculantes e Pisos Móveis</a></li>
+				</ul>
+			  </li>
+			</ul>
+			<ul class="navbar-nav  ms-auto mb-2 mb-lg-0">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="text" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					Categorias
+					</a>
+					<ul class="dropdown-menu dropdown-menu-dark link_menu " aria-labelledby="navbarDropdown">
+					<?php require $this->checkTemplate("categories-menu");?>  
+					</ul>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link btn btn-outline-light text1" aria-current="page" href="/ecommerce/index.php/cart">Carrinho - <span class="cart"><?php echo getCartTotal(); ?>€</span> <i class="fa fa-shopping-cart"></i> <span class="badge bg-light text-black ms-1 rounded-pill"><?php echo getCartNrQtd(); ?></span></a>
+				</li>
+				
+				<?php if( checkLogin(false) ){ ?>
 
-			<li class="nav-item">
-				<a class="nav-link active" id="text" aria-current="page" href="/ecommerce/index.php/profile"><?php echo getUserName(); ?> <i class="fa fa-user"></i> </a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link active" id="text" aria-current="page" href="/ecommerce/index.php/logout">Logout <i class="fa fa-close"></i> </a>
-			  </li>
-			<?php }else{ ?>
+				<li class="nav-item">
+					<a class="nav-link active" id="text" aria-current="page" href="/ecommerce/index.php/profile"><?php echo getUserName(); ?> <i class="fa fa-user"></i> </a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" id="text" aria-current="page" href="/ecommerce/index.php/logout">Logout <i class="fa fa-close"></i> </a>
+				</li>
+				<?php }else{ ?>
 
-			<li class="nav-item">
-				<a class="nav-link active" id="text" aria-current="page" href="/ecommerce/index.php/login">Login <i class="fa fa-lock"></i> </a>
-			  </li>
-			  <?php } ?>
+				<li class="nav-item">
+					<a class="nav-link active" id="text" aria-current="page" href="/ecommerce/index.php/login">Login <i class="fa fa-lock"></i> </a>
+				</li>
+				<?php } ?>
 
 			</ul>
 		</div>

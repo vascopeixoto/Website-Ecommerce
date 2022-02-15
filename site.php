@@ -38,6 +38,41 @@ $app->get('/missao', function() {
 
 });
 
+$app->get('/setor', function() {
+	$page = new Page();
+	$page->setTpl("servicos");
+
+});
+
+$app->get('/carga', function() {
+	$page = new Page();
+	$page->setTpl("carga");
+
+});
+$app->get('/setor', function() {
+	$page = new Page();
+	$page->setTpl("servicos");
+
+});
+
+$app->get('/4pl', function() {
+	$page = new Page();
+	$page->setTpl("4pl");
+
+});
+
+$app->get('/warehousing', function() {
+	$page = new Page();
+	$page->setTpl("warehousing");
+
+});
+
+$app->get('/twms', function() {
+	$page = new Page();
+	$page->setTpl("twms");
+
+});
+
 $app->get('/categories/:idcategory', function($idcategory){
 	$categories = new Category();
 	$categories->get((int)$idcategory);
@@ -171,7 +206,7 @@ $app->get("/profile/orders/:idorder", function ($idorder){
 });
 
 $app->get('/login',function(){
-
+	User::testlogin();
 	$page= new Page();
 	$page->setTpl("login",[
 		'error'=>User::getError(),

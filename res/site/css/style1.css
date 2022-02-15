@@ -5,7 +5,7 @@ nav { min-height: 90px; margin-bottom: 0 !important;  }
 
 body{background-color:#A9A9A9 ;}
 
-#main {background: linear-gradient(#fc604e , 	#FF0000);padding-bottom:  50px;}
+#main {background: linear-gradient(#fc604e , 	#FF0000);padding:  40px; margin-top: 90px;}
 #main img  { max-height: 597px; }
 
 #main2 { padding: 150px 0px 50px 0px; background-color:#A9A9A9 ; }
@@ -20,7 +20,11 @@ height: 64px;
 #contacto { margin: 50px 0;}
 #ola {margin: 50px 0;  }
 
-
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
+ 
 #apresentacao { background-color: #363636;}
 
 #imagens {height: 215px;}
@@ -29,5 +33,8 @@ height: 64px;
 .link_menu a{ color:red !important; padding:10px;  }
 .link_menu a:hover{color:white !important; }
 #text{ color:red !important; padding:10px;  }
+.text1{ color:red !important; padding:10px;  }
 #text:hover{color:white !important; }
+.text1:hover span{color:rgb(0, 0, 0) !important; }
+
 .center { text-align: center }
