@@ -50,7 +50,7 @@
 			  <li class="nav-item">
 				<a class="nav-link "></a>
 			  </li>
-			  <li class="nav-item dropdown">
+			  <li class="nav-item dropdown drop">
 				<a class="nav-link dropdown-toggle" id="text" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 				  Empresa
 				</a>
@@ -62,7 +62,19 @@
 					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/contactos">Contactos</a></li>
 				</ul>
 			  </li>
-			  <li class="nav-item dropdown">
+			  <li class="nav-item dropdown drop">
+				<a class="nav-link dropdown-toggle" id="text" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  Distribuição
+				</a>
+				<ul class="dropdown-menu dropdown-menu-dark link_menu " aria-labelledby="navbarDropdown">
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/carga">Carga Completa</a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/expnot">Distribuição Expresso e Noturna</a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/palete">Distribuição À Palete</a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/cisternas">Cisternas</a></li>
+					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/basc">Basculantes e Pisos Móveis</a></li>
+				</ul>
+			  </li>
+			  <li class="nav-item dropdown drop">
 				<a class="nav-link dropdown-toggle" id="text" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 				  Logística
 				</a>
@@ -72,21 +84,10 @@
 					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/4pl">4PL</a></li>
 				</ul>
 			  </li>
-			  <li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" id="text" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-				  Distribuição
-				</a>
-				<ul class="dropdown-menu dropdown-menu-dark link_menu " aria-labelledby="navbarDropdown">
-					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/carga">Carga Completa</a></li>
-					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/expnot">Distribuição Expresso e Noturna</a></li>
-					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/palete">Distribuição À Palete</a></li>
-					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/cisternas">Cisternas</a></li>
-					<li><a class="text-decoration-none dropdown-item" href="/ecommerce/index.php/cisternas">Basculantes e Pisos Móveis</a></li>
-				</ul>
-			  </li>
+			  
 			</ul>
 			<ul class="navbar-nav  ms-auto mb-2 mb-lg-0">
-				<li class="nav-item dropdown">
+				<li class="nav-item dropdown drop">
 					<a class="nav-link dropdown-toggle" id="text" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Categorias
 					</a>

@@ -49,9 +49,26 @@ $app->get('/carga', function() {
 	$page->setTpl("carga");
 
 });
-$app->get('/setor', function() {
+$app->get('/expnot', function() {
 	$page = new Page();
-	$page->setTpl("servicos");
+	$page->setTpl("expnot");
+
+});
+
+$app->get('/palete', function() {
+	$page = new Page();
+	$page->setTpl("palete");
+
+});
+
+$app->get('/cisternas', function() {
+	$page = new Page();
+	$page->setTpl("cisterna");
+
+});
+$app->get('/basc', function() {
+	$page = new Page();
+	$page->setTpl("basc");
 
 });
 

@@ -1,4 +1,4 @@
-<div id="main" >
+<?php if(!class_exists('Rain\Tpl')){exit;}?><div id="main" >
 	<div class="container" >
 		<h1 style="text-align: center;"><span style="color: white"> <strong>- História -</strong></span></h1>
 			<div class="col-md-12 col-xs-12">
