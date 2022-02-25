@@ -235,6 +235,7 @@ $app->get('/login',function(){
 $app->post('/login',function(){
 	try{
 		User::login($_POST['login'], $_POST['password']);
+		$_SESSION['registerValues'] = NULL;
 	}catch(Exception $e){
 		User::setError($e->getMessage());
 		header("Location: /ecommerce/index.php/login");
@@ -297,6 +298,7 @@ $app->post('/register',function(){
 	$user->save();
 
 	User::login($_POST['email'], $_POST['password']);
+	$_SESSION['registerValues'] = NULL;
 	header("Location: /ecommerce/index.php");
 	exit;
 });

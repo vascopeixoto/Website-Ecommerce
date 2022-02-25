@@ -318,6 +318,15 @@ public static function checkLoginExist($login){
 	return (count($results)>0);
 }
 
+public static function checkEmailExist($login){
+	$sql= new Sql();
+	$results=$sql->select("SELECT * FROM tb_persons WHERE desemail=:desemail",[
+		':desemail'=>$login
+	]);
+
+	return (count($results)>0);
+}
+
 public function getOrders(){
 	$sql= new Sql();
 

@@ -122,6 +122,15 @@ $app->get("/admin/users/:iduser", function($iduser){
 
 $app->post('/admin/users/create', function(){
 	User::verifyLogin();
+	if(User::checkEmailExist($_POST['desemail'])===true){
+		header("Location: /ecommerce/index.php/admin/users");
+		exit;
+	}
+
+	if(User::checkLoginExist($_POST['deslogin'])===true){
+		header("Location: /ecommerce/index.php/admin/users");
+		exit;
+	}
 
 	$user = new User();
 
@@ -132,6 +141,8 @@ $app->post('/admin/users/create', function(){
  		"cost"=>12
 
  	]);
+
+
 
  	$user->setData($_POST);
 
