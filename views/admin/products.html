@@ -19,7 +19,7 @@
   		<div class="box box-primary">
             
             <div class="box-header">
-              <a href="/ecommerce/index.php/admin/products/create" class="btn btn-success">Cadastrar Produto</a>
+              <a href="/ecommerce/index.php/admin/products/create" class="btn btn-success">Criar Produto</a>
               <div class="box-tools">
                 <form action="/ecommerce/index.php/admin/products">
                   <div class="input-group input-group-sm" style="width: 150px;">

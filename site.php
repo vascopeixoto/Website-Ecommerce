@@ -287,6 +287,7 @@ $app->post('/register',function(){
 
 	]);
 
+
 	$user->setData([
 		'inadmin'=>0,
 		'deslogin'=>$_POST['email'],

@@ -132,7 +132,7 @@ $app->post('/admin/users/create', function(){
 		exit;
 	}
 
-	$user = new User();
+
 
  	$_POST["inadmin"] = (isset($_POST["inadmin"])) ? 1 : 0;
 
@@ -141,11 +141,8 @@ $app->post('/admin/users/create', function(){
  		"cost"=>12
 
  	]);
-
-
-
+	$user = new User();
  	$user->setData($_POST);
-
 	$user->save();
 
 	header("Location: /ecommerce/index.php/admin/users");
